@@ -28,13 +28,15 @@ const PageButtonContainer = styled.button<PageButtonContainerProps>`
 type PageButtonProps = {
   page: number;
   isClicked: boolean;
-  //   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const PageButton = (props: PageButtonProps) => {
-  const { page, isClicked } = props;
+  const { page, isClicked, onClick } = props;
   return (
-    <PageButtonContainer isClicked={isClicked}>{page}</PageButtonContainer>
+    <PageButtonContainer isClicked={isClicked} onClick={onClick}>
+      {page}
+    </PageButtonContainer>
   );
 };
 
