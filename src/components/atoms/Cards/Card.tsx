@@ -5,6 +5,7 @@ import {
   faLaptop,
   faCalendarWeek,
 } from '@fortawesome/free-solid-svg-icons';
+import CardInfo from './CardInfo';
 
 const CardContainer = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const CardContainer = styled.div`
   padding: 1.75rem 1.5rem;
   box-sizing: border-box;
   margin-bottom: 1rem;
-  &:nth-last-child(-n + 4) {
+  &:nth-last-of-type(-n + 4) {
     margin-bottom: 0;
   }
 `;
@@ -53,18 +54,9 @@ const Description = styled.p`
   line-height: 1.6;
 `;
 
-const IconTextContainer = styled.div`
+const TmpDiv = styled.div`
   display: flex;
-  flex-direction: column;
-`;
-
-const IconText = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  > * {
-    margin-right: 0.5rem;
-  }
+  justify-content: space-between;
 `;
 
 type CardProps = {
@@ -85,21 +77,10 @@ const Card = (props: CardProps) => {
         <Title>{title}</Title>
         <Description>{short_description}</Description>
       </TextArea>
-      <IconTextContainer>
-        <IconText>
-          <FontAwesomeIcon icon={faChartColumn} />
-          <p>난이도: 미설정</p>
-        </IconText>
-        <IconText>
-          <FontAwesomeIcon icon={faLaptop} />
-          <p>수업: 온라인</p>
-        </IconText>
-        <IconText>
-          <FontAwesomeIcon icon={faCalendarWeek} />
-          <p>기간: 무제한</p>
-        </IconText>
-      </IconTextContainer>
-      <img src={logo_file_url} alt="logo" width="52px" height="52px" />
+      <TmpDiv>
+        <CardInfo />
+        <img src={logo_file_url} alt="logo" width="52px" height="52px" />
+      </TmpDiv>
     </CardContainer>
   );
 };
