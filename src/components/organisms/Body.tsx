@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { axiosGetCourseList } from '../../api/axios.custom';
 import { courseInfo } from '../../types/apiDto';
 import Results from './Results';
+import Pagination from './Pagination';
 
 const ResultContainer = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ const Body = () => {
       <div className="cards">
         <Results courses={courses} />
       </div>
-      <div className="pagenation">pagenation</div>
+      <Pagination />
     </ResultContainer>
   );
 };
