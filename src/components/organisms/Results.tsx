@@ -6,8 +6,8 @@ import { useState } from 'react';
 const ResultsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: left;
+  align-items: top;
 `;
 
 type ResultsProps = {
@@ -20,7 +20,7 @@ const Results = (props: ResultsProps) => {
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const renderCards = (): JSX.Element[] => {
-    const cards = courses?.slice(offset, offset + limit).map((course) => {
+    const cards = courses?.slice(offset, offset + limit).map((course, idx) => {
       const { enroll_type, is_free, title, short_description, logo_file_url } =
         course;
       return (
@@ -30,6 +30,7 @@ const Results = (props: ResultsProps) => {
           title={title}
           short_description={short_description}
           logo_file_url={logo_file_url}
+          key={idx}
         />
       );
     });

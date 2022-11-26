@@ -1,10 +1,4 @@
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChartColumn,
-  faLaptop,
-  faCalendarWeek,
-} from '@fortawesome/free-solid-svg-icons';
 import CardInfo from './CardInfo';
 
 const CardContainer = styled.div`
@@ -15,6 +9,10 @@ const CardContainer = styled.div`
   height: 21.125rem;
   border-radius: 0.5rem;
   padding: 1.75rem 1.5rem;
+  margin-right: 1rem;
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
   box-sizing: border-box;
   margin-bottom: 1rem;
   &:nth-last-of-type(-n + 4) {

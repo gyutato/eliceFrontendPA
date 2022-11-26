@@ -12,7 +12,6 @@ const LayoutContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   box-sizing: border-box;
-  border: 1px solid black;
 `;
 
 const Layout = (): JSX.Element => {
