@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Chip from '../chips/Chip';
+import Chip from '../Buttons/Chip';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { priceFilterOptions } from '../../../types/filterOptions';
