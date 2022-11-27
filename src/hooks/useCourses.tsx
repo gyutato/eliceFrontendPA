@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { courseInfo } from '../types/apiDto';
 import { axiosGetCourseList } from '../api/axios.custom';
 
-const useCourses = (search: string, offset: number) => {
+const useCourses = (offset: number) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [courses, setCourses] = useState<courseInfo[] | null>(null);
   const [course_count, setCourse_count] = useState<number>(0);

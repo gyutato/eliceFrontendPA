@@ -24,15 +24,11 @@ const TotalResult = styled.div`
 const Body = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [offset, setOffset] = useState(0);
-  const search = searchParams.toString();
-  const { courses, setCourses, course_count, status } = useCourses(
-    search,
-    offset,
-  );
+  const { courses, setCourses, course_count, status } = useCourses(offset);
 
   useEffect(() => {
     setOffset(0);
-  }, [search]);
+  }, [searchParams]);
 
   return (
     <ResultContainer>
