@@ -4,6 +4,7 @@ import globalStyle from './styles/globalStyle';
 import Header from './components/atoms/headers/Header';
 import Layout from './layout/Layout';
 import Results from './components/organisms/Body';
+import EmptyResult from './pages/EmptyResult';
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Results />} />
           </Route>
-          {/*<Route path="*" element={<NotFound />} />*/}
+          <Route
+            path="*"
+            element={<EmptyResult text="존재하지 않는 페이지입니다." />}
+          />
         </Routes>
       </BrowserRouter>
     </>
