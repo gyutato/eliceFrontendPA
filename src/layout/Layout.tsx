@@ -3,9 +3,11 @@ import CourseFilter from '../components/organisms/CourseFilter';
 import { Outlet } from 'react-router-dom';
 
 const LayoutContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 4rem;
   margin-left: auto;
   margin-right: auto;
   padding: 24px;
