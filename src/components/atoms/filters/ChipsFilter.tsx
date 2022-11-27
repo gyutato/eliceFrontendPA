@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Chip from '../Buttons/Chip';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { priceFilterOptions } from '../../../types/filterOptions';
 
 const FilterContainer = styled.div`
   margin-top: 10px;
@@ -24,14 +23,20 @@ const CategoryName = styled.p`
   font-size: 12px;
 `;
 
-const ChipsFilter = (): JSX.Element => {
+type ChipsFilterProps = {
+  category: string;
+  filterOption: string[];
+};
+
+const ChipsFilter = (props: ChipsFilterProps): JSX.Element => {
+  const { category, filterOption } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentParams, setCurrentParams] = useState(
-    new Set(searchParams.getAll('price')),
+    new Set(searchParams.getAll(category)),
   );
 
   useEffect(() => {
-    setCurrentParams(new Set(searchParams.getAll('price')));
+    setCurrentParams(new Set(searchParams.getAll(category)));
   }, [searchParams]);
 
   // 옵션 클릭 handle 함수
@@ -42,23 +47,23 @@ const ChipsFilter = (): JSX.Element => {
     }
     const priceType = target.name;
     if (currentParams.has(priceType)) {
-      searchParams.delete('price');
+      searchParams.delete(category);
       let tmp = [...currentParams].filter((param) => param !== priceType);
       tmp.forEach((param) => {
-        searchParams.append('price', param);
+        searchParams.append(category, param);
       });
     } else {
-      searchParams.append('price', priceType);
+      searchParams.append(category, priceType);
     }
     setSearchParams(searchParams);
   };
 
   // 칩 렌더링 함수
-  const renderPriceChips = (): JSX.Element[] => {
-    const PricesChips = priceFilterOptions.map((item, idx) => {
+  const renderChips = (): JSX.Element[] => {
+    const Chips = filterOption.map((item, idx) => {
       return <Chip name={item} isClicked={currentParams.has(item)} key={idx} />;
     });
-    return PricesChips;
+    return Chips;
   };
 
   return (
@@ -66,9 +71,7 @@ const ChipsFilter = (): JSX.Element => {
       <FilterCategory className="filterCategory">
         <CategoryName className="categoryName">가격</CategoryName>
       </FilterCategory>
-      <div style={{ padding: '0 8px', display: 'flex' }}>
-        {renderPriceChips()}
-      </div>
+      <div style={{ padding: '0 8px', display: 'flex' }}>{renderChips()}</div>
     </FilterContainer>
   );
 };
