@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { ChangeEvent, useState } from 'react';
 import React, { useEffect } from 'react';
-import useDebounce from '../../../utils/useDebounce';
+import useDebounce from '../../../hooks/useDebounce';
 import { useSearchParams } from 'react-router-dom';
 
 const SearchAreaDiv = styled.div`

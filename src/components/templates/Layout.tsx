@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import CourseFilter from '../components/organisms/CourseFilter';
+import CourseFilter from '../organisms/CourseFilter';
 import { Outlet } from 'react-router-dom';
 
 const LayoutContainer = styled.div`

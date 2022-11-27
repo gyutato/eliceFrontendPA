@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { axiosGetCourseList } from '../../api/axios.custom';
-import { courseInfo } from '../../types/apiDto';
-import useCourses from '../../hooks/useCourses';
-import Results from './Results';
-import Pagination from './Pagination';
-import EmptyResult from '../../pages/EmptyResult';
+import { axiosGetCourseList } from '../api/axios.custom';
+import { courseInfo } from '../types/apiDto';
+import useCourses from '../hooks/useCourses';
+import Results from '../components/organisms/Results';
+import Pagination from '../components/organisms/Pagination';
+import EmptyResult from '../components/organisms/EmptyResult';
 
 const ResultContainer = styled.div`
   display: flex;
@@ -29,7 +29,6 @@ const Body = () => {
     search,
     offset,
   );
-  console.log(status);
 
   useEffect(() => {
     setOffset(0);
@@ -56,21 +55,6 @@ const Body = () => {
       ) : (
         <EmptyResult text="에러가 발생했습니다." />
       )}
-
-      {/* {course_count > 0 ? (
-        <>
-          <Results courses={courses} />
-          <Pagination
-            offset={offset}
-            setOffset={setOffset}
-            course_count={course_count}
-          />
-        </>
-      ) : status === 'ok' ? (
-        <EmptyResult text="검색 결과가 없습니다." />
-      ) : (
-        <EmptyResult text="에러가 발생했습니다." />
-      )} */}
     </ResultContainer>
   );
 };
