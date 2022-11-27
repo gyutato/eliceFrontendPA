@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 function useDebounce<T extends any[]>(
   callback: (...params: T) => void,
-  time: number,
+  delay: number,
 ) {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   return (...params: T) => {
@@ -11,7 +11,7 @@ function useDebounce<T extends any[]>(
     timer.current = setTimeout(() => {
       callback(...params);
       timer.current = null;
-    }, time);
+    }, delay);
   };
 }
 

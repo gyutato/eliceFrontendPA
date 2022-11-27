@@ -26,6 +26,7 @@ const useCourses = (offset: number) => {
       })
       .catch((error) => {
         setStatus('error');
+        console.error(error);
       });
   }, [searchParams, offset]);
 
