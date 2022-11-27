@@ -33,12 +33,10 @@ const TextBox = styled.input`
 `;
 
 const SearchArea = (): JSX.Element => {
-  const [inputValue, setInputValue] = useState<string | null>('');
   const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    setInputValue(searchParams.get('keyword'));
-  }, []);
+  const [inputValue, setInputValue] = useState<string | null>(
+    searchParams.get('keyword'),
+  );
 
   const debouncedSearch = useDebounce((inputValue) => {
     if (inputValue === '') searchParams.delete('keyword');
