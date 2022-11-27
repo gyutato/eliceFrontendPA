@@ -107,7 +107,7 @@ function useDebounce<T extends any[]>(
 
 ### 4. filter_conditions 파라미터 생성 및 API 호출
 
-- `Body` 가 **최초** 렌더링될 때 전체 과목 카드가 렌더링되어야 하므로, **render 메서드 이전에 API 호출 결과가 변수에 저장되도록** `useCourse` hook을 구현하여 사용했습니다.
+- `Body` 가 최초 렌더링될 때 전체 과목 카드가 렌더링되어야 하므로, render 메서드 이전에 API 호출 결과가 변수에 저장되도록 `useCourse` hook을 구현하여 사용했습니다.
 - API를 호출하는 커스텀 hook `useCourses` 내부에서, 과제에 주어진 예시와 동일한 형식의 객체를 생성하여 값을 추가했습니다.
 - hook이 `course_count` 와 `status` 상태를 리턴하도록 구현하여, 과목 카드 혹은 로딩, 에러 문구가 조건부 렌더링됩니다.
 
@@ -128,5 +128,5 @@ function useDebounce<T extends any[]>(
   - `filter_conditions` 객체는 파라미터 형식 및 필터 종류가 달라짐에 따라 변화하기 쉬운 값입니다. 따라서 key-value 값들을 인자로 받아 객체를 리턴하는 함수 혹은 hook을 만들어 분리함으로써 이후 수정사항에 유연하게 대응할 수 있을 것 같습니다. 본 과제에서는 예시 형식과 동일한 형태로 하드코딩으로 구현한 것이 한계점으로 남았다고 생각합니다.
 
 - `useMemo`, `useCallback` 등을 사용한 최적화 작업
-  - state의 변경이 빈번하게 일어나는 컴포넌트의 경우, 재렌더링 시 함수들도 다시 재생성되는 비효율성이 발생할 수 있습니다.
-  - 예를 들어 `searchArea` 는 `inputValue` state가 변경될 때마다 매번 재렌더링되지만, 검색을 수행하는 `debouncedSearch` 함수는 **delay 만큼 지난 후의 inputValue** 값의 변경에 의존합니다. 따라서 `useCallback` hook을 사용하여 보다 최적화된 구조로 개선할 수 있을 것 같습니다.
+  - state의 변경이 빈번한 컴포넌트의 경우, 재렌더링 시 함수들도 다시 재생성되는 비효율성이 발생할 수 있습니다.
+  - 예를 들어 `searchArea` 는 `inputValue` state가 변경될 때마다 매번 재렌더링되지만, 검색을 수행하는 `debouncedSearch` 함수는 `delay` 만큼 지난 후의 `inputValue` 값의 변경에 의존합니다. 따라서 `useCallback` hook을 사용하여 보다 최적화된 구조로 개선할 수 있을 것 같습니다.
