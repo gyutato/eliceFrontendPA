@@ -6,7 +6,7 @@ import PageButton from '../atoms/Buttons/PageButton';
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 `;
 type PaginationProps = {
   offset: number;

@@ -10,13 +10,12 @@ const CardContainer = styled.div`
   border-radius: 0.5rem;
   padding: 1.75rem 1.5rem;
   margin-right: 1rem;
-  &:nth-of-type(4n) {
-    margin-right: 0;
-  }
   box-sizing: border-box;
   margin-bottom: 1rem;
-  &:nth-last-of-type(-n + 4) {
-    margin-bottom: 0;
+  @media (min-width: 1280px) {
+    &:nth-of-type(4n) {
+      margin-right: 0;
+    }
   }
 `;
 
