@@ -8,41 +8,58 @@ import {
 
 const IconTextContainer = styled.div`
   display: flex;
+  height: 4rem;
   flex-direction: column;
-  margin: 0.5rem 0;
+  justify-content: space-between;
+  > * {
+    margin: 0;
+  }
 `;
 
 const IconText = styled.div`
   display: flex;
-  gap: 0.25rem;
   height: 1rem;
   align-items: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
-  > * {
-    margin-right: 0.5rem;
-    margin-bottom: 0.25rem;
-  }
-  > p {
-    line-height: 1rem;
-    vertical-align: middle;
-  }
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+`;
+
+const TextContainer = styled.p`
+  font-size: 0.75rem;
+  color: #7d7e80;
+  line-height: 1rem;
+  vertical-align: middle;
 `;
 
 const CardInfo = () => {
   return (
-    <IconTextContainer>
-      <IconText>
-        <FontAwesomeIcon icon={faChartColumn} width="16px" />
-        <p>난이도: 미설정</p>
+    <IconTextContainer className="IconTextContainer">
+      <IconText className="IconText">
+        <IconContainer>
+          <FontAwesomeIcon icon={faChartColumn} />
+        </IconContainer>
+        <TextContainer>난이도: 미설정</TextContainer>
       </IconText>
       <IconText>
-        <FontAwesomeIcon icon={faLaptop} width="16px" />
-        <p>수업: 온라인</p>
+        <IconContainer>
+          <FontAwesomeIcon icon={faLaptop} />
+        </IconContainer>
+        <TextContainer>수업: 온라인</TextContainer>
       </IconText>
       <IconText>
-        <FontAwesomeIcon icon={faCalendarWeek} width="16px" />
-        <p>기간: 무제한</p>
+        <IconContainer>
+          <FontAwesomeIcon icon={faCalendarWeek} />
+        </IconContainer>
+        <TextContainer>기간: 무제한</TextContainer>
       </IconText>
     </IconTextContainer>
   );

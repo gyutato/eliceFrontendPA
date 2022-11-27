@@ -10,7 +10,7 @@ const CardContainer = styled.div`
   border-radius: 0.5rem;
   padding: 1.75rem 1.5rem;
   margin-right: 1rem;
-  &:nth-child(4n) {
+  &:nth-of-type(4n) {
     margin-right: 0;
   }
   box-sizing: border-box;
@@ -36,6 +36,12 @@ const Label = styled.p`
 `;
 const Title = styled.p`
   display: inline-block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 3.5rem;
   font-size: 1.125rem;
   font-weight: bold;
   line-height: 1.6;
@@ -50,11 +56,19 @@ const Description = styled.p`
   font-size: 0.875rem;
   color: #5e5f61;
   line-height: 1.6;
+  height: 3rem;
+  margin-bottom: 1rem;
 `;
 
-const TmpDiv = styled.div`
+const Details = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const CourseImg = styled.img`
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
 `;
 
 type CardProps = {
@@ -75,10 +89,10 @@ const Card = (props: CardProps) => {
         <Title>{title}</Title>
         <Description>{short_description}</Description>
       </TextArea>
-      <TmpDiv>
+      <Details>
         <CardInfo />
-        <img src={logo_file_url} alt="logo" width="52px" height="52px" />
-      </TmpDiv>
+        <CourseImg src={logo_file_url} alt="eliceAcademy" />
+      </Details>
     </CardContainer>
   );
 };
